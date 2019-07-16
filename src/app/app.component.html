@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light bg-light">
+  <img src="https://www.goodreads.com/assets/layout/header/goodreads_logo.svg" height="50" alt="">
+</nav>
+<div class="container p-4">
+  <h3 class="display-4">Book Search</h3>
+  <app-search (search)="search($event)"></app-search>
+  <mat-spinner *ngIf="isloading" class="mt-5" style="margin-left: 50%"></mat-spinner>
+  <div *ngIf="!isloading && searchResults !== null" class="mt-5">
+    <p class="text-info">PAGE {{currSearch.page}} OF ABOUT {{searchResults.totalResults}} RESULTS
+      ({{searchResults.queryTimeSeconds}} SECONDS)</p>
+    <app-book-list [searchResults]="searchResults"></app-book-list>
+    <app-paginator [total]="searchResults.totalResults" [pageSize]="20" [currentPageIndex]="currSearch.page"
+      [maxPages]="100" (page)="onPageChanged($event)">
+    </app-paginator>
+    <div *ngIf="searchResults.totalResults === 0">
+      <p class="h4">No Results</p>
+      <p class="h5">Search by both title and author, and double-check the spelling.</p>
+      <p class="h5">Try searching by ISBN.</p>
+    </div>
+  </div>
+</div>

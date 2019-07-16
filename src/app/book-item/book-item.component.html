@@ -1,0 +1,14 @@
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-sm-2 pt-2 pl-2">
+      <img [src]="book.smallImage" class="card-img" alt="...">
+    </div>
+    <div class="col-sm-10">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text">by {{book.author.name}}</p>
+        <p class="card-text"><small class="text-muted">{{book.avgRating}} avg rating -  {{book.ratings}} ratings - published {{book.publishedYear}} - {{book.editions}} editions</small></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<nav aria-label="..." *ngIf="totalPages>1">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{disabled: currentPageIndex <= 1}">
+      <button class="page-link"  (click)="setPageIndex(currentPageIndex-1)">Previous</button>
+    </li>
+
+    <li class="page-item" *ngFor="let i of pageNumbers" [ngClass]="{active: currentPageIndex === i}" >
+      <button class="page-link"  (click)="setPageIndex(i)">{{i}}
+      </button>
+    </li>
+
+    <li class="page-item" [ngClass]="{disabled: currentPageIndex >= totalPages}">
+      <button class="page-link"  (click)="setPageIndex(currentPageIndex+1)">Next</button>
+    </li>
+  </ul>
+</nav>
